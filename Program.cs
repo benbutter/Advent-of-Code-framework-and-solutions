@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace AOC_2022
+namespace _2021_1_Recap
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
         }
     }
 }
