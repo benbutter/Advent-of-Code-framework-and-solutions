@@ -10,12 +10,17 @@ namespace _2021_1_Recap
 
         public bool IsValueHigherThanPrevious(int value)
         {
+           
+
             if (previousValue == null)
             {
+                previousValue = value;
                 return false;
             }
 
-            return true;
+            var result = value > previousValue;
+            previousValue = value;
+            return result;
 
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _2021_1_Recap;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -15,10 +16,20 @@ namespace AOC_2022._21_01
 
         public int GetSolution()
         {
+            String line;
+            int total =0;
+            var analyzer = new ValueAnalyzer();
+            while (!String.IsNullOrEmpty(line = input.ReadLine()))
+            {
+                
+                if (analyzer.IsValueHigherThanPrevious(Int32.Parse(line)))
+                {
+                    total++;
+                }
+            }
             
-            Console.WriteLine(input.ReadToEnd());
             
-            return 0;
+            return total;
         }
 
        

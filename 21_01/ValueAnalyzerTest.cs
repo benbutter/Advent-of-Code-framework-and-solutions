@@ -29,5 +29,29 @@ namespace _2021_1_Recap_Tests
 
             Assert.IsFalse(result);
         }
+
+        [TestMethod]
+        public void ValueLowerPreviousValue_AnalyzerReturnsFalse()
+        {
+            ValueAnalyzer analyzer = new ValueAnalyzer();
+
+            analyzer.IsValueHigherThanPrevious(TestHighValue);
+
+            var result = analyzer.IsValueHigherThanPrevious(TestLowValue);
+
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void ValueSameHigherPreviousValue_AnalyzerReturnsTrue()
+        {
+            ValueAnalyzer analyzer = new ValueAnalyzer();
+
+            analyzer.IsValueHigherThanPrevious(TestLowValue);
+
+            var result = analyzer.IsValueHigherThanPrevious(TestHighValue);
+
+            Assert.IsTrue(result);
+        }
     }
 }
