@@ -4,7 +4,7 @@ using _2021_1_Recap;
 namespace _2021_1_Recap_Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class ValueAnalyzerTest
     {
         const int TestHighValue = 999;
         const int TestLowValue = 1;
@@ -12,6 +12,18 @@ namespace _2021_1_Recap_Tests
         public void NoPreviousValue_AnalyzerReturnsFalse()
         {
             ValueAnalyzer analyzer = new ValueAnalyzer();
+
+            var result = analyzer.IsValueHigherThanPrevious(TestHighValue);
+
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void ValueSameAsPreviousValue_AnalyzerReturnsFalse()
+        {
+            ValueAnalyzer analyzer = new ValueAnalyzer();
+
+            analyzer.IsValueHigherThanPrevious(TestHighValue);
 
             var result = analyzer.IsValueHigherThanPrevious(TestHighValue);
 
