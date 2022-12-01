@@ -5,7 +5,7 @@ namespace _2021_1_Recap
 {
     class Program
     {
-        static void Main(string[] args)
+      /*  static void Main(string[] args)
         {
             const string puzzleDate = "21_01";//change as needed
 
@@ -14,6 +14,6 @@ namespace _2021_1_Recap
             var solver = fact.GetSolver(puzzleDate);
 
             solver.GetSolution();
-        }
+        }*/
     }
 }
