@@ -4,9 +4,9 @@ using System.Text;
 
 namespace AOC_2022
 {
-    public class Initializer
+    public class SolverRunner
     {
-        public int Initialize(string puzzleDate)
+        public int SolvePuzzle(string puzzleDate)
         {
            
             var fact = new SolverFactory();
