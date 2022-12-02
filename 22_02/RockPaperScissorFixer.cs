@@ -26,7 +26,7 @@ namespace AOC_2022._22_02
             {
                 return GetChoiceIfFixingWin(opponetsGo);
             }
-            return 'Q';
+            return ' ';
         }
         private char GetChoiceIfFixingLoss(char opponetsGo)
         {
@@ -42,7 +42,7 @@ namespace AOC_2022._22_02
             {
                 return 'Y';
             }
-            return 'Q';
+            return ' ';
         }
 
         private char GetChoiceIfFixingDraw(char opponetsGo)
@@ -59,7 +59,7 @@ namespace AOC_2022._22_02
             {
                 return 'Z';
             }
-            return 'Q';
+            return ' ';
         }
 
         private char GetChoiceIfFixingWin(char opponetsGo)
@@ -78,7 +78,7 @@ namespace AOC_2022._22_02
             {
                 return 'X';
             }
-            return 'Q';
+            return ' ';
         }
     }
 }
