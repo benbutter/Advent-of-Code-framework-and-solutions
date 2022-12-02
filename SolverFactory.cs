@@ -48,7 +48,7 @@ namespace AOC_2022
 
         private StreamReader GetInput(string puzzleDate)
         {
-
+            //TODO - relative path needed
             string path = $"C:\\Users\\benbu\\source\\repos\\AOC-2022\\{puzzleDate}\\input.txt";
             if (!File.Exists(path))
             {
