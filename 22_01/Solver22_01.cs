@@ -18,13 +18,17 @@ namespace AOC_2022._22_01
             
             List<int> accumulatedValues = AccumulateValuesIntoList();
 
-            return GetHighestValueInList(accumulatedValues);
+            //part one
+            //return GetHighestValueInList(accumulatedValues); 
 
+            //part two
+            return GetTotalThreeHighestValueInList(accumulatedValues);
         }
 
+       
         private List<int> AccumulateValuesIntoList()
         {
-            String line;
+            String line = "";
             List<int> accumulatedValues = new List<int>();
 
             int totalForCurrent = 0;
@@ -32,16 +36,47 @@ namespace AOC_2022._22_01
             while (!input.EndOfStream)
             {
                 line = input.ReadLine();
-                if (line == null)
+                if (line == "")
                 {
                     accumulatedValues.Add(totalForCurrent);
                     totalForCurrent = 0;
                 }
-                totalForCurrent = totalForCurrent + Int32.Parse(line);
-            }
+                else
+                {
+                    totalForCurrent += Int32.Parse(line);
 
+                }
+
+            }
+            
+            if (line != "")
+            {
+                accumulatedValues.Add(totalForCurrent);
+            }
             return accumulatedValues;
         }
+
+        private int GetTotalThreeHighestValueInList(List<int> accumulatedValues)
+        {
+            int highestThreeValuesCombined = 0;
+
+            accumulatedValues.Sort();
+            accumulatedValues.Reverse();
+
+            for (int i = 0; i < accumulatedValues.Count; i++)
+            {
+              
+                if (i > 2)
+                {
+                    break;
+                }
+
+                highestThreeValuesCombined += accumulatedValues[i];
+            }
+
+            return highestThreeValuesCombined;
+        }
+
 
         private int GetHighestValueInList(List<int> accumulatedValues)
         {
@@ -51,7 +86,7 @@ namespace AOC_2022._22_01
             {
                 if (accumulatedValues[i] > highestValue)
                 {
-                    highestValue = accumulatedValues[1];
+                    highestValue = accumulatedValues[i];
                 }
             }
 
