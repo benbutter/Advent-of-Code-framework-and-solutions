@@ -12,54 +12,71 @@ namespace AOC_2022._22_02
             //LOSE
             if (resultToFixTo == 'X')
             {
-                if (opponetsGo == 'A')
-                {
-                    return 'Z';
-                }
-                if (opponetsGo == 'B')
-                {
-                    return 'X';
-                }
-                if (opponetsGo == 'C')
-                {
-                    return 'Y';
-                }
+                return GetChoiceIfFixingLoss(opponetsGo);
             }
 
             //draw
             if (resultToFixTo == 'Y')
             {
-                if (opponetsGo == 'A')
-                {
-                    return 'X';
-                }
-                if (opponetsGo == 'B')
-                {
-                    return 'Y';
-                }
-                if (opponetsGo == 'C')
-                {
-                    return 'Z';
-                }
+                return GetChoiceIfFixingDraw(opponetsGo);
             }
                 
             //WINS
              if (resultToFixTo == 'Z')
             {
-                if (opponetsGo == 'A')
-                    {
-                    return 'Y';
-                }
+                return GetChoiceIfFixingWin(opponetsGo);
+            }
+            return 'Q';
+        }
+        private char GetChoiceIfFixingLoss(char opponetsGo)
+        {
+            if (opponetsGo == 'A')
+            {
+                return 'Z';
+            }
+            if (opponetsGo == 'B')
+            {
+                return 'X';
+            }
+            if (opponetsGo == 'C')
+            {
+                return 'Y';
+            }
+            return 'Q';
+        }
 
-                if (opponetsGo == 'B')
-                {
-                    return 'Z';
-                }
+        private char GetChoiceIfFixingDraw(char opponetsGo)
+        {
+            if (opponetsGo == 'A')
+            {
+                return 'X';
+            }
+            if (opponetsGo == 'B')
+            {
+                return 'Y';
+            }
+            if (opponetsGo == 'C')
+            {
+                return 'Z';
+            }
+            return 'Q';
+        }
 
-                if (opponetsGo == 'C')
-                {
-                    return 'X';
-                }
+        private char GetChoiceIfFixingWin(char opponetsGo)
+        {
+            if (opponetsGo == 'A')
+            {
+                return 'Y';
+            }
+
+            if (opponetsGo == 'B')
+            {
+                return 'Z';
+            }
+
+            if (opponetsGo == 'C')
+            {
+                return 'X';
             }
             return 'Q';
         }
