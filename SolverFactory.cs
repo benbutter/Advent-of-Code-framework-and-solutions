@@ -7,21 +7,26 @@ namespace AOC_2022
 {
     public class SolverFactory
     {
-        public ISolver GetSolver(string suffix)
+        public ISolver CreateSolver(string puzzleDate)
         {
-            Type type = GetSolverType(suffix);
+            Type type = GetSolverType(puzzleDate);
 
             ISolver solver = CreateSolverInstance(type);
 
-            solver.SetInput(GetInput(suffix));
+            SetInputOnSolver(puzzleDate, solver);
 
             return solver;
 
         }
 
-        private static Type GetSolverType(string suffix)
+        private void SetInputOnSolver(string puzzleDate, ISolver solver)
         {
-            string typename = $"AOC_2022._{suffix}.Solver{suffix}";
+            solver.SetInput(GetInput(puzzleDate));
+        }
+
+        private Type GetSolverType(string puzzleDate)
+        {
+            string typename = $"AOC_2022._{puzzleDate}.Solver{puzzleDate}";
 
             Type type = Type.GetType(typename);
 
@@ -33,7 +38,7 @@ namespace AOC_2022
             return type;
         }
 
-        private static ISolver CreateSolverInstance(Type type)
+        private ISolver CreateSolverInstance(Type type)
         {
             var instance = Activator.CreateInstance(type);
 
@@ -41,10 +46,10 @@ namespace AOC_2022
             return solver;
         }
 
-        private StreamReader GetInput(string suffix)
+        private StreamReader GetInput(string puzzleDate)
         {
 
-            string path = $"C:\\Users\\benbu\\source\\repos\\AOC-2022\\{suffix}\\input.txt";
+            string path = $"C:\\Users\\benbu\\source\\repos\\AOC-2022\\{puzzleDate}\\input.txt";
             if (!File.Exists(path))
             {
                 throw new Exception("File not found.");

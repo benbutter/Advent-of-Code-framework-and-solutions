@@ -8,10 +8,9 @@ namespace AOC_2022
     {
         public int SolvePuzzle(string puzzleDate)
         {
-           
             var fact = new SolverFactory();
 
-            var solver = fact.GetSolver(puzzleDate);
+            var solver = fact.CreateSolver(puzzleDate);
 
             return solver.GetSolution();
         }
