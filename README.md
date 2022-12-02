@@ -43,4 +43,4 @@ SetInput(StreamReader streamReader) - this allows the framework to pass the inpu
         }
         
  Input is also provided for the solver in this folder. create a file called input.txt and paste in your input. Remember your input id persoanlized to you as is the answer.
- C.copy and paste into the file is the easiest way to vary input - use the example/someone elses input/ your own test input.
+ C.copy and paste into the file is the easiest way to vary input - use the example/someone elses input/ your own test input
