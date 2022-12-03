@@ -17,8 +17,9 @@ namespace AOC_2022._22_03
             Assert.AreEqual('H', result[0]);
         }
 
-        [TestMethod]
-        public void FindCommonChars_FindsHK()
+        //bad test - misunderstood requirement - need to break on first match.
+       // [TestMethod]
+       /* public void FindCommonChars_FindsHK()
         {
             CommonCharsFinder finder = new CommonCharsFinder();
             string firstString = "ABCDEFGHIJLK";
@@ -29,7 +30,7 @@ namespace AOC_2022._22_03
             Assert.AreEqual('H', result[0]);
             Assert.AreEqual('K', result[1]);
         }
-
+       */
         [TestMethod]
         public void FindCommonChars_FindskAsLowercase()
         {

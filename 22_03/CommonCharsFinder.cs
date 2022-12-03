@@ -19,7 +19,10 @@ namespace AOC_2022._22_03
                 {
                     if (c ==secondString[j])
                     {
+                        
                         results.Add(c);
+                        return results; //return when find first one
+
                     }
                 }
             }
