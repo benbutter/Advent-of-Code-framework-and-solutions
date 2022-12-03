@@ -7,6 +7,9 @@ namespace AOC_2022._22_03
 {
     class Solver22_03 : ISolver
     {
+        string[] lines = new string[3];
+        List<string> linesToCheck = new List<string>();
+
         StreamReader input;
         public void SetInput(StreamReader streamReader)
         {
@@ -17,28 +20,45 @@ namespace AOC_2022._22_03
         {
             int total = 0;
             string line;
+            
+            
+            int count = 0;
+            var priorityFinder = new PriorityFinder();
+
             while (!input.EndOfStream)
             {
-                
-                var halver = new StringHalver();
-                var charsFinder = new CommonCharsFinder();
-                var priorityFinder = new PriorityFinder();
 
+                // var halver = new StringHalver(); part 1
+                //   var charsFinder = new CommonCharsFinder(); //part 1
 
-                line = input.ReadLine();
+                //   var halvesArray = halver.HalveString(line); part 1
+                //   var chars = charsFinder.FindCommonChars(halvesArray[0], halvesArray[1]); //part 1
 
-                var halvesArray = halver.HalveString(line);
+                // lines[count] = input.ReadLine();
+                //  if (count % 3 == 0)
+                //  {
 
-                var chars = charsFinder.FindCommonChars(halvesArray[0], halvesArray[1]);
+                //  string[] lines = new string[3];
 
-                foreach (var c in chars)
+                linesToCheck.Add(input.ReadLine());
+                if (linesToCheck.Count == 3)
                 {
-                    total += priorityFinder.GetPriority(c);
+                   total += FindPriorityOfCommonChars(linesToCheck);
+                    linesToCheck.Clear();
                 }
-
-                
+              
             }
             return total;
+        }
+        public int FindPriorityOfCommonChars(List<string> linesRead)
+        {
+           var charsFinder = new CommonCharsFinderGroups();
+
+           var chars =  charsFinder.FindCommonChars(linesRead[0], linesRead[1], linesRead[2]);
+
+            var priorityFinder = new PriorityFinder();
+            return priorityFinder.GetPriority(chars[0]);
+          // return 0;
         }
     }
 }
