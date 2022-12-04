@@ -1,0 +1,38 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+
+namespace AOC_2022._22_04
+{
+    class Solver22_04 : ISolver
+    {
+        StreamReader input;
+        int count = 0;
+        ContainsCheck checker = new ContainsCheck();
+
+        public void SetInput(StreamReader streamReader)
+        {
+            input = streamReader; ;
+        }
+        public int GetSolution()
+        {
+            string line;
+
+            while (!input.EndOfStream)
+            {
+                line = input.ReadLine();
+                string[] ranges = line.Split(',');
+
+                if (checker.DoesOnenumberRangeContainTheOther(ranges[0], ranges[1]))
+                {
+                    count++;
+                }
+            }
+
+            return count;
+        }
+
+   
+    }
+}
