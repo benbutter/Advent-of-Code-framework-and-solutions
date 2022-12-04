@@ -24,7 +24,8 @@ namespace AOC_2022._22_04
                 line = input.ReadLine();
                 string[] ranges = line.Split(',');
 
-                if (checker.DoesOnenumberRangeContainTheOther(ranges[0], ranges[1]))
+                //  if (checker.DoesOnenumberRangeContainTheOther(ranges[0], ranges[1])) //part 1
+                if (checker.DoNumberRangesOverlap(ranges[0], ranges[1])) //part 2
                 {
                     count++;
                 }

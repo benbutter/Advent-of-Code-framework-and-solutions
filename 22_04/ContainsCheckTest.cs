@@ -113,6 +113,98 @@ namespace AOC_2022._22_04
             Assert.IsTrue(result);
 
         }
+
+        [TestMethod]
+        public void DoNumberRangesOverlap_DifferentRanges_Returnfalse()
+        {
+            const string FirstNumberRange = "1-5";
+            const string SecondNumberRange = "6-9";
+            var checker = new ContainsCheck();
+
+            var result = checker.DoNumberRangesOverlap(FirstNumberRange, SecondNumberRange);
+
+            Assert.IsFalse(result);
+
+        }
+
+        [TestMethod]
+        public void DoNumberRangesOverlap_OverlappingRangesFirstRangeLow_Returntrue()
+        {
+            const string FirstNumberRange = "1-8";
+            const string SecondNumberRange = "6-9";
+            var checker = new ContainsCheck();
+
+            var result = checker.DoNumberRangesOverlap(FirstNumberRange, SecondNumberRange);
+
+            Assert.IsTrue(result);
+
+        }
+
+
+        [TestMethod]
+        public void DoNumberRangesOverlap_OverlappingRangesFirstRangeHigh_Returntrue()
+        {
+            const string FirstNumberRange = "8-22";
+            const string SecondNumberRange = "6-9";
+            var checker = new ContainsCheck();
+
+            var result = checker.DoNumberRangesOverlap(FirstNumberRange, SecondNumberRange);
+
+            Assert.IsTrue(result);
+
+        }
+
+        [TestMethod]
+        public void DoNumberRangesOverlap_OverlappingRanges5779_Returntrue()
+        {
+            const string FirstNumberRange = "5-7";
+            const string SecondNumberRange = "7-9";
+            var checker = new ContainsCheck();
+
+            var result = checker.DoNumberRangesOverlap(FirstNumberRange, SecondNumberRange);
+
+            Assert.IsTrue(result);
+
+        }
+
+        [TestMethod]
+        public void DoNumberRangesOverlap_OverlappingRanges2837_Returntrue()
+        {
+            const string FirstNumberRange = "2-8";
+            const string SecondNumberRange = "3-7";
+            var checker = new ContainsCheck();
+
+            var result = checker.DoNumberRangesOverlap(FirstNumberRange, SecondNumberRange);
+
+            Assert.IsTrue(result);
+
+        }
+
+        [TestMethod]
+        public void DoNumberRangesOverlap_OverlappingRanges6646_Returntrue()
+        {
+            const string FirstNumberRange = "6-6";
+            const string SecondNumberRange = "4-6";
+            var checker = new ContainsCheck();
+
+            var result = checker.DoNumberRangesOverlap(FirstNumberRange, SecondNumberRange);
+
+            Assert.IsTrue(result);
+
+        }
+
+        [TestMethod]
+        public void DoNumberRangesOverlap_OverlappingRanges2648_Returntrue()
+        {
+            const string FirstNumberRange = "2-6";
+            const string SecondNumberRange = "4-8";
+            var checker = new ContainsCheck();
+
+            var result = checker.DoNumberRangesOverlap(FirstNumberRange, SecondNumberRange);
+
+            Assert.IsTrue(result);
+
+        }
     }
 }
 
