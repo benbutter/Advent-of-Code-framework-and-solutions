@@ -13,7 +13,7 @@ namespace AOC_2022._22_02
             input = streamReader;
         }
 
-        public int GetSolution()
+        public string GetSolution()
         {
             string line;
             int score = 0;
@@ -32,7 +32,7 @@ namespace AOC_2022._22_02
 
                 score += scorer.GetScoreForRound(line[0], choiceToFix);
             }
-            return score;
+            return score.ToString();
         }
     }
 }

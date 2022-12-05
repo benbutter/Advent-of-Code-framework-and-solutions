@@ -13,7 +13,7 @@ namespace AOC_2022._22_01
             input = streamReader;
         }
 
-        public int GetSolution()
+        public string GetSolution()
         {
             
             List<int> accumulatedValues = AccumulateValuesIntoList();
@@ -22,7 +22,7 @@ namespace AOC_2022._22_01
             //return GetHighestValueInList(accumulatedValues); 
 
             //part two
-            return GetTotalThreeHighestValueInList(accumulatedValues);
+            return GetTotalThreeHighestValueInList(accumulatedValues).ToString();
         }
 
        

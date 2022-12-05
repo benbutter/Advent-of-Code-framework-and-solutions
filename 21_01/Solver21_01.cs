@@ -14,7 +14,7 @@ namespace AOC_2022._21_01
             input = streamReader;
         }
 
-        public int GetSolution()
+        public string GetSolution()
         {
             String line;
             int total =0;
@@ -29,7 +29,7 @@ namespace AOC_2022._21_01
             }
             
             
-            return total;
+            return total.ToString();
         }
 
        

@@ -16,7 +16,7 @@ namespace AOC_2022._22_03
             input = streamReader;
         }
 
-        public int GetSolution()
+        public string GetSolution()
         {
             int total = 0;
         
@@ -33,7 +33,7 @@ namespace AOC_2022._22_03
                 }
               
             }
-            return total;
+            return total.ToString();
         }
         public int FindPriorityOfCommonChars(List<string> linesRead)
         {

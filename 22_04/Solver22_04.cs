@@ -15,7 +15,7 @@ namespace AOC_2022._22_04
         {
             input = streamReader; ;
         }
-        public int GetSolution()
+        public string GetSolution()
         {
             string line;
 
@@ -31,7 +31,7 @@ namespace AOC_2022._22_04
                 }
             }
 
-            return count;
+            return count.ToString();
         }
 
    

@@ -6,7 +6,7 @@ namespace AOC_2022
 {
     public class SolverRunner
     {
-        public int SolvePuzzle(string puzzleDate)
+        public string SolvePuzzle(string puzzleDate)
         {
             var fact = new SolverFactory();
 
