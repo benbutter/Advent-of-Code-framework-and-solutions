@@ -41,8 +41,8 @@ namespace AOC_2022._22_05
                     CreateStacksHardCodedForTestInput(line);
                 }
                 else
-                {
-
+                {   if (line.Length > 0)
+                    MoveCrates(line);
                 }
             }
 
@@ -52,6 +52,14 @@ namespace AOC_2022._22_05
             }
             return "";
         }
+
+        private void MoveCrates(string line)
+        {
+            int numberToMove = line[5];
+            int moveFrom = line[12];
+            int moveTo = line[17];
+        }
+
         private void CreateStacksHardCodedForTestInput(string line)
         {
            if (crates.Count == 0)
