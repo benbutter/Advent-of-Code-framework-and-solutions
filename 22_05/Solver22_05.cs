@@ -33,8 +33,9 @@ namespace AOC_2022._22_05
                     stackingPhaseOver = true;
                     for (int i = 0; i < crates.Count; i++)
                     {
-                        crates[i] = ReverseString(crates[i]);
+                        crates[i] = ReverseString(crates[i]).Trim();
                     }
+                    continue;
                 }
                 if (!stackingPhaseOver)
                 {
@@ -55,9 +56,19 @@ namespace AOC_2022._22_05
 
         private void MoveCrates(string line)
         {
-            int numberToMove = line[5];
-            int moveFrom = line[12];
-            int moveTo = line[17];
+            int numberToMove = Int32.Parse( line[5].ToString());
+            int moveFrom = Int32.Parse(line[12].ToString()) -1;
+            int moveTo = Int32.Parse(line[17].ToString()) -1;
+
+            for (int i = 0; i < numberToMove; i++)
+            {
+                //move last char
+                crates[moveTo] = crates[moveTo] + crates[moveFrom][crates[moveFrom].Length -1];
+
+                //remove last char
+                crates[moveFrom] = crates[moveFrom].Remove(crates[moveFrom].Length - 1, 1);
+                
+            }
         }
 
         private void CreateStacksHardCodedForTestInput(string line)
