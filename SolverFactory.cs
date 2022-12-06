@@ -48,9 +48,10 @@ namespace AOC_2022
 
         private StreamReader GetInput(string puzzleDate)
         {
-            //TODO - relative path needed
-            string path = $"C:\\Users\\benbu\\source\\repos\\AOC-2022\\{puzzleDate}\\input.txt";
-            if (!File.Exists(path))
+          //there must be a better way of doing this
+            DirectoryInfo di = new DirectoryInfo(Directory.GetCurrentDirectory());
+            string path = di.Parent.Parent.Parent.Parent.FullName + $"\\AOC-2022\\{puzzleDate}\\input.txt"; ;
+             if (!File.Exists(path))
             {
                 throw new Exception("File not found.");
             }
