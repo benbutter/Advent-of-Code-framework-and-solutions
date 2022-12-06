@@ -42,8 +42,8 @@ namespace AOC_2022._22_05
                 }
                 if (!stackingPhaseOver)
                 {
-                  //  CreateStacksHardCodedForTestInput(line);
-                    CreateStacksHardCodedForProdInput(line);
+                   // CreateStacksHardCodedForTestInput(line);
+                      CreateStacksHardCodedForProdInput(line);
                 }
                 else
                 {   if (line.Length > 0)
@@ -66,37 +66,23 @@ namespace AOC_2022._22_05
 
         private void MoveCrates(string line)
         {
-            /*   int numberToMove = Int32.Parse( line[5].ToString());
-               int moveFrom = Int32.Parse(line[12].ToString()) -1;
-               int moveTo = Int32.Parse(line[17].ToString()) -1;
-            
-
-            //string input = ;
-            // Split on one or more non-digit characters.
-           
-            foreach (string value in numbers)
-            {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    int i = int.Parse(value);
-                    Console.WriteLine("Number: {0}", i);
-                }
-            }*/
+      
 
             string[] numbers = Regex.Split(line, @"\D+");
             int numberToMove = Int32.Parse(numbers[1]);
             int moveFrom = Int32.Parse(numbers[2])-1;
             int moveTo = Int32.Parse(numbers[3])-1;
-
+            string staging = "";
             for (int i = 0; i < numberToMove; i++)
             {
                 //move last char
-                 crates[moveTo] = crates[moveTo] + crates[moveFrom][crates[moveFrom].Length -1];
-
+                // crates[moveTo] = crates[moveTo] + crates[moveFrom][crates[moveFrom].Length -1];cpart1
+                staging += crates[moveFrom][crates[moveFrom].Length - 1];
                 //remove last char
                 crates[moveFrom] = crates[moveFrom].Remove(crates[moveFrom].Length - 1, 1);
-                
+               
             }
+            crates[moveTo] += ReverseString(staging);
         }
 
         private void CreateStacksHardCodedForTestInput(string line)
@@ -143,17 +129,7 @@ namespace AOC_2022._22_05
             }
         }
 
-        private void AddToCrates(string crateName, int crateStack)
-        {
-           if (crates.Count < crateStack)
-            {
-                crates.Add(crateName);
-            }
-            else
-            {
-                crates[crateStack] = crates[crateStack] + crateName;
-            }
-        }
+      
         static string ReverseString(string s)
         {
             char[] array = s.ToCharArray();
