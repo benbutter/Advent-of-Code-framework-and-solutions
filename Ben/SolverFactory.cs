@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace AOC_2022
@@ -50,7 +51,8 @@ namespace AOC_2022
         {
           //there must be a better way of doing this
             DirectoryInfo di = new DirectoryInfo(Directory.GetCurrentDirectory());
-            string path = di.Parent.Parent.Parent.Parent.FullName + $"\\AOC-2022\\{puzzleDate}\\input.txt"; ;
+            string path = di.Parent.Parent.Parent.Parent.FullName + $"\\AOC-2022\\Ben\\{puzzleDate}\\input.txt";
+            path = "C:\\Users\\Rosia\\Documents\\GitHub\\AOC-2022\\Ben\\22_04r\\input.txt";
              if (!File.Exists(path))
             {
                 throw new Exception("File not found.");
