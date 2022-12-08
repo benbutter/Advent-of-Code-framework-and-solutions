@@ -1,9 +1,7 @@
 ﻿using AOC_2022;
 using System;
 
-
-
-namespace Runner
+namespace BBRunner
 {
     class Program
     {
@@ -15,8 +13,9 @@ namespace Runner
 
             var solverRunner = new SolverRunner();
 
-
-
+            // solverRunner.injectedPath = "C:\\Users\\benbu\\source\\repos\\AOC - 2022\\Ben\\22_07\\input.txt";
+            //solverRunner.injectedPath = "C: \\Users\\benbu\\source\repos\\AOC - 2022\\Ben\\22_07\\input.txt";
+            solverRunner.injectedPath = "C:\\input.txt";
             Console.WriteLine(solverRunner.SolvePuzzle(puzzleDate));
         }
     }

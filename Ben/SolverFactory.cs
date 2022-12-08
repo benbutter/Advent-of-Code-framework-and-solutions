@@ -8,6 +8,8 @@ namespace AOC_2022
 {
     public class SolverFactory
     {
+        public string injectedPath;
+
         public ISolver CreateSolver(string puzzleDate)
         {
             Type type = GetSolverType(puzzleDate);
@@ -49,10 +51,19 @@ namespace AOC_2022
 
         private StreamReader GetInput(string puzzleDate)
         {
-          //there must be a better way of doing this
-            DirectoryInfo di = new DirectoryInfo(Directory.GetCurrentDirectory());
-            string path = di.Parent.Parent.Parent.Parent.FullName + $"\\AOC-2022\\Ben\\{puzzleDate}\\input.txt";
-            path = "C:\\Users\\Rosia\\Documents\\GitHub\\AOC-2022\\Ben\\22_04r\\input.txt";
+            string path;
+
+            if (injectedPath == null)
+            {
+                //there must be a better way of doing this
+                DirectoryInfo di = new DirectoryInfo(Directory.GetCurrentDirectory());
+                path = di.Parent.Parent.Parent.Parent.FullName + $"\\AOC-2022\\Ben\\{puzzleDate}\\input.txt";
+                path = "C:\\Users\\Rosia\\Documents\\GitHub\\AOC-2022\\Ben\\22_04r\\input.txt";
+            }
+            else
+            {
+               path = injectedPath;
+            }
              if (!File.Exists(path))
             {
                 throw new Exception("File not found.");
