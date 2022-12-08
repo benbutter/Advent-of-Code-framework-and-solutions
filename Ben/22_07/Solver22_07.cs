@@ -13,10 +13,6 @@ namespace AOC_2022._22_07
         int lineCount = 0;
         private void SetCurrentDir(Directory dir)
         {
-            if (dir == null)
-            {
-                var a = 'a';
-            }
             currentDirectory = dir;
         }
 
@@ -43,11 +39,7 @@ namespace AOC_2022._22_07
             {
                 line = input.ReadLine();
                 lineCount++;
-                if (lineCount == 16)
-                {
-                    var a = 'a';
-                }
-
+             
                 if (line.Contains("$ cd"))
                 {
                     listMode = false;
@@ -75,7 +67,36 @@ namespace AOC_2022._22_07
 
             }
 
-            // topLevel.GetSize();
+            //part 2 
+            const int spaceNeeded = 30000000;
+            const int diskSize = 70000000;
+            var amountAvailable = diskSize - topLevel.GetSize();
+
+            var minimunSizeOfDirToDelete = spaceNeeded - amountAvailable;
+
+            Directory deletionCandidate = null;
+
+            topLevel.GetDirectories(directories);
+            foreach (var dir in directories)
+            {
+                var size = dir.GetSize();
+                
+                if (size >= minimunSizeOfDirToDelete )
+                {
+                    if (deletionCandidate == null)
+                    {
+                        deletionCandidate = dir;
+                    }
+
+                    if (dir.GetSize() < deletionCandidate.GetSize())
+                    {
+                        deletionCandidate = dir;
+                    }
+                }
+            }
+
+            return deletionCandidate.GetSize().ToString();
+            /*part1
             topLevel.GetDirectories(directories);
             int totalSize = 0;
 
@@ -87,17 +108,14 @@ namespace AOC_2022._22_07
                     totalSize += size;
                 }
             }
-            return totalSize.ToString();
+            return totalSize.ToString(); part1*/
         }
 
         private void Move(string line)
         {
             if (line[5] =='.' && line[6] == '.')
             {
-                if (currentDirectory.myParent == null)
-                {
-                    var a = 'a';
-                }
+                
                 SetCurrentDir(currentDirectory.myParent);
             }
             else if (Char.IsLetter(line[5]))
