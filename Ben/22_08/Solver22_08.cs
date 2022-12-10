@@ -26,7 +26,10 @@ namespace AOC_2022._22_08
 
             listOfTrees.CopyTo(arrayOfTrees);
 
-            return ArrayReader(arrayOfTrees);
+            //  return ArrayReader(arrayOfTrees); //part 1
+
+            //part 2
+            return GetTopScenicScore(arrayOfTrees);
         }
 
         public  string ArrayReader( string[] arrayOfTrees)
@@ -50,5 +53,27 @@ namespace AOC_2022._22_08
             return count.ToString();
         }
 
+        public string GetTopScenicScore(string[] arrayOfTrees)
+        {
+            int topScenicScore = 0;
+            int currentScenicScore;
+            string line;
+
+            ScenicScoreCalc calc = new ScenicScoreCalc();
+            for (int i = 0; i < arrayOfTrees.Length; i++)
+            {
+                line = arrayOfTrees[i];
+
+                for (int j = 0; j < line.Length; j++)
+                {
+                    currentScenicScore = calc.GetScenicScore(j, i, arrayOfTrees);
+                    if (currentScenicScore > topScenicScore)
+                    {
+                        topScenicScore = currentScenicScore;
+                    }
+                }
+            }
+            return topScenicScore.ToString();
+        }
     }
 }

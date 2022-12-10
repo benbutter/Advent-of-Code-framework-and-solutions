@@ -40,7 +40,7 @@ namespace AOC_2022._22_08
 
             var result = solver.ArrayReader(array);
 
-            Assert.AreEqual("29", result);
+            Assert.AreEqual("28", result);
 
         }
         [TestMethod]
