@@ -107,9 +107,12 @@ namespace AOC_2022._22_08
         private bool IsTreeOVisibleFromBack(int x, int y, string[] trees)
         {
             Array.Reverse(trees);
-            int reverseY = trees.Length - y;
-          
-            return IsTreeOVisibleFromFront(x, reverseY, trees);
+            int reverseY = trees.Length - y -1;
+           
+            var isVisible= IsTreeOVisibleFromFront(x, reverseY, trees);
+            Array.Reverse(trees); //bug fix, forogt to unreverse - took hours to find.
+
+            return isVisible;
         }
     }
     
