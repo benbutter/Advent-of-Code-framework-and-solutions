@@ -9,7 +9,7 @@ namespace Runner
     {
         static void Main(string[] args)
         {
-            const string puzzleDate = "22_04r"; //change as needed
+            const string puzzleDate = "22_07"; //change as needed
 
 
 
