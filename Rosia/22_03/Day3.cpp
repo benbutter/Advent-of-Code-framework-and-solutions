@@ -23,7 +23,7 @@ Rucksack getRucksackFromString(std::string string)
 
 int getItemValue(char item)
 {
-  
+  // get items value, a-z = 1-26, A-Z = 27-53
   int itemValue = item - 96;
   if (itemValue < 0)
       itemValue += 58;

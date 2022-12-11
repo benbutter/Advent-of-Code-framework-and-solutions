@@ -2,8 +2,9 @@
 #include <string>
 #include <vector>
 
-// condfidence in solution: 5/10
+// condfidence in solution: 3/10
 // it works well but I feel like nested for loops is bad
+// I shouldnt have used a struct for Group either, because I cant loop through it
 
 struct Group
 {
@@ -11,16 +12,6 @@ struct Group
   std::string  secondMember;
   std::string  thirdMember;
 };
-
-Rucksack getRucksackFromString(std::string string)
-{
-  int midPoint = string.length()/2;
-  return
-  {
-  string.substr(0, midPoint),
-  string.substr(midPoint, string.length())
-  };
-}
 
 int getItemValue(char item)
 {
@@ -31,30 +22,41 @@ int getItemValue(char item)
   return itemValue;
 }
 
-
 int main(int argc, char **argv)
 {
-  std::vector<Rucksack> AllRucksacks;  
+  std::vector<Group> AllGroups;  
   // get input
   std::string input = "placeholder data";
+
   while(input != "")
   {
+    Group tempGroup;
+
+    // eww
     getline(std::cin, input);
-    AllRucksacks.push_back(getRucksackFromString(input));
+    tempGroup.firstMember = input;
+    getline(std::cin, input);
+    tempGroup.secondMember = input;
+    getline(std::cin, input);
+    tempGroup.thirdMember = input;
+
+
+    AllGroups.push_back(tempGroup);
   }
   
-  
   int totalValue = 0;
-  for (Rucksack rucksack : AllRucksacks)
+  for (Group group : AllGroups)
   {
     // not sure about this...
-    for(char item : rucksack.secondCompartment)
+    for(char item : group.firstMember)
     {
-      if (rucksack.firstCompartment.find_first_of(item) != std::string::npos)
+      if (group.secondMember.find_first_of(item) != std::string::npos)
       {
-                
-        totalValue += getItemValue(item);
-        break;    
+        if (group.thirdMember.find_first_of(item) != std::string::npos)
+        {
+          totalValue += getItemValue(item);
+          break;
+        }
       }
     }
   }
