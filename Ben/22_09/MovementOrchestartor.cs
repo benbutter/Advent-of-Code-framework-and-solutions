@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AOC_2022._22_09
 {
-    class MovementOrchestartor
+    public class MovementOrchestartor
     {
         //if were adjacent 
         //no gap stay where are - now diagonl
@@ -16,28 +16,51 @@ namespace AOC_2022._22_09
         //need to check for gaps and on top of.
 
         //state patter? - 3 states, on top of, adjacnet, diagonal - think thats it.
-        public ITailMover myTailMover;
-        public Head myHead;
-        public Tail myTail;
-        public AdjacentTailMover myAdjecentTailMover;
-        public DiagonalTailMover myDiagonalTailMover;
-        public OnTopOfTailMover myOnTopOfMover;
+       // public ITailMover myTailMover;
+        public Knot myHead;
+      //  public Knot myTail;
+    //    public AdjacentTailMover myAdjecentTailMover;
+     //   public DiagonalTailMover myDiagonalTailMover;
+      //  public OnTopOfTailMover myOnTopOfMover;
         public CurrentPositionFinder myPositionFinder;
+        public List<Knot> allKnots;
         public MovementOrchestartor()
         {
-            myHead = new Head();
-            myTail = new Tail();
-            myAdjecentTailMover = new AdjacentTailMover();
-            myAdjecentTailMover.SetMover(this);
-            myDiagonalTailMover = new DiagonalTailMover();
-            myDiagonalTailMover.SetMover(this);
-            myOnTopOfMover = new OnTopOfTailMover();
-            myOnTopOfMover.SetMover(this);
-            myTailMover = myOnTopOfMover;
+            InitialSetup();
+        }
+        public MovementOrchestartor(int numberOfKnots)
+        {
+            InitialSetup();
+
+            for (int i = 0; i < numberOfKnots; i++)
+            {
+                Knot newKnot = new Knot();
+                allKnots.Add(newKnot);
+                if (i==0)
+                {
+                    myHead = newKnot;
+                }
+                newKnot.myMover = this;
+            }
+        }
+        private void InitialSetup()
+        {
+            myHead = new Knot();
+         //   myTail = new Knot();
+           // myAdjecentTailMover = new AdjacentTailMover();
+            //myAdjecentTailMover.SetMover(this);
+            //myDiagonalTailMover = new DiagonalTailMover();
+            //myDiagonalTailMover.SetMover(this);
+            //myOnTopOfMover = new OnTopOfTailMover();
+            //myOnTopOfMover.SetMover(this);
+            //myTailMover = myOnTopOfMover;
             myPositionFinder = new CurrentPositionFinder();
+            allKnots = new List<Knot>();
         }
 
-        public void MoveHead(char direction)
+       
+
+            public void MoveHead(char direction)
         {
             if (direction == 'U')
             {
@@ -55,56 +78,81 @@ namespace AOC_2022._22_09
             {
                 myHead.positionX--;
             }
-            //need to check if now on top of each other - if so emergency intervention of state
-            if (myPositionFinder.AreOnTopOfEachOther(myHead.positionX, myHead.positionY,
-                                                      myTail.positionX, myTail.positionY))
+
+            Knot previousKnot = myHead;
+            foreach (var currentKnot in allKnots)
             {
-                myTailMover = myOnTopOfMover;
+                if (currentKnot == myHead)
+                {
+                    previousKnot = currentKnot;
+                }
+                else
+                {
+                    MoveKnot(direction, previousKnot, currentKnot);
+                    previousKnot = currentKnot;
+                }
+            }
+            
+        }
+
+        public void MoveKnot(char direction, Knot previousKnot, Knot currentKnot)
+        {
+            //need to check if now on top of each other - if so emergency intervention of state
+
+            if (myPositionFinder.AreOnTopOfEachOther(previousKnot.positionX, previousKnot.positionY,
+                                                     currentKnot.positionX, currentKnot.positionY))
+            {
+               currentKnot.myTailMover = currentKnot.myOnTopOfMover;
             }
             else
             {
-                myTailMover.Move(direction);
+               currentKnot.myTailMover.Move(direction);
             }
-            myTail.RecordCurrentPosition();
-            WriteDetails(direction);
+            currentKnot.RecordCurrentPosition();
+            WriteDetails(direction, previousKnot,currentKnot);
         }
-
-        private void WriteDetails(char direction)
+        private void WriteDetails(char direction, Knot previousKnot, Knot currentKnot)
         {
             Console.WriteLine(direction.ToString() + " " +
-                              "Head " + myHead.positionX + "," + myHead.positionY +
-                              " Tail " + myTail.positionX + "," + myTail.positionY);
+                              "Head " + previousKnot.positionX + "," + previousKnot.positionY +
+                              " Tail " + currentKnot.positionX + "," + currentKnot.positionY);
         }
 
-        public bool IsAGap()
+        public bool IsAGap(Knot currentKnot)
         {
-            return myPositionFinder.IsAGap(myHead.positionX,
-                                            myHead.positionY,
-                                            myTail.positionX,
-                                            myTail.positionY);
+            int indexForPrev = allKnots.IndexOf(currentKnot) -1;
+            Knot previousKnot = allKnots[indexForPrev];
+           
+            return myPositionFinder.IsAGap(previousKnot.positionX,
+                                            previousKnot.positionY,
+                                            currentKnot.positionX,
+                                            currentKnot.positionY);
         }
 
-        public void PositionTailAdjacentToHeade(char directionHeadMoved)
+        public void PositionTailAdjacentToHeade(char directionHeadMoved, Knot currentKnot)
         {
+            int indexForPrev = allKnots.IndexOf(currentKnot) - 1;
+            Knot previousKnot = allKnots[indexForPrev];
+
             if (directionHeadMoved == 'U')
             {
-                myTail.positionY = myHead.positionY - 1;
-                myTail.positionX = myHead.positionX;
+                currentKnot.positionY = previousKnot.positionY - 1;
+                currentKnot.positionX = previousKnot.positionX;
             }
             if (directionHeadMoved == 'D')
             {
-                myTail.positionY = myHead.positionY + 1;
-                myTail.positionX = myHead.positionX;
+                currentKnot.positionY = previousKnot.positionY + 1;
+                currentKnot.positionX = previousKnot.positionX;
             }
             if (directionHeadMoved == 'R')
             {
-                myTail.positionX = myHead.positionX - 1;
-                myTail.positionY = myHead.positionY;
+                currentKnot.positionX = previousKnot.positionX - 1;
+                currentKnot.positionY = previousKnot.positionY;
             }
             if (directionHeadMoved == 'L')
             {
-                myTail.positionX = myHead.positionX + 1;
-                myTail.positionY = myHead.positionY;
+                currentKnot.positionX = previousKnot.positionX + 1;
+                currentKnot.positionY = previousKnot.positionY;
             }
         }
     }

@@ -18,7 +18,7 @@ namespace AOC_2022._22_09
             string line;
             char direction;
             int numberOfCommands;
-            MovementOrchestartor orchestartor = new MovementOrchestartor();
+            MovementOrchestartor orchestartor = new MovementOrchestartor(2);
 
             while (!input.EndOfStream)
             {
@@ -39,7 +39,7 @@ namespace AOC_2022._22_09
               
             }
 
-            List<string> distinctPositions = orchestartor.myTail.allPositionsVisited.Distinct().ToList();
+            List<string> distinctPositions = orchestartor.allKnots.Last().allPositionsVisited.Distinct().ToList();
 
             foreach (var item in distinctPositions)
             {
