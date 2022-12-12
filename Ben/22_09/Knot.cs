@@ -9,6 +9,8 @@ namespace AOC_2022._22_09
         public int positionX;
         public int positionY;
 
+       
+
         public List<string> allPositionsVisited;
         public ITailMover myTailMover;
         public Knot myHead;

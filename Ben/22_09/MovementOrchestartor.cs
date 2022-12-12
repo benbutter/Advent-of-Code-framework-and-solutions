@@ -64,10 +64,12 @@ namespace AOC_2022._22_09
         {
             if (direction == 'U')
             {
+                //var y = myHead.positionY;
                 myHead.positionY++;
             }
             if (direction == 'D')
             {
+               // var y = myHead.positionY;
                 myHead.positionY--;
             }
             if (direction == 'R')
@@ -109,13 +111,18 @@ namespace AOC_2022._22_09
                currentKnot.myTailMover.Move(direction);
             }
             currentKnot.RecordCurrentPosition();
-            WriteDetails(direction, previousKnot,currentKnot);
+            
+         //   if (currentKnot == allKnots[allKnots.Count-1])
+           // {
+                WriteDetails(direction, previousKnot, currentKnot);
+            //}
+            
         }
         private void WriteDetails(char direction, Knot previousKnot, Knot currentKnot)
         {
             Console.WriteLine(direction.ToString() + " " +
-                              "Head " + previousKnot.positionX + "," + previousKnot.positionY +
-                              " Tail " + currentKnot.positionX + "," + currentKnot.positionY);
+                          //    allKnots.IndexOf(previousKnot) + " " + previousKnot.positionX + "," + previousKnot.positionY +
+                              allKnots.IndexOf(currentKnot) + " " + currentKnot.positionX + "," + currentKnot.positionY);
         }
 
         public bool IsAGap(Knot currentKnot)
@@ -129,6 +136,17 @@ namespace AOC_2022._22_09
                                             currentKnot.positionY);
         }
 
+        public bool IsKnotStillUnderAnotherKnot(Knot currentKnot)
+        {
+            int indexForPrev = allKnots.IndexOf(currentKnot) - 1;
+            Knot previousKnot = allKnots[indexForPrev];
+
+            return myPositionFinder.AreOnTopOfEachOther(previousKnot.positionX,
+                                                        previousKnot.positionY,
+                                                        currentKnot.positionX,
+                                                        currentKnot.positionY);
+        }
+
         public void PositionTailAdjacentToHeade(char directionHeadMoved, Knot currentKnot)
         {
             int indexForPrev = allKnots.IndexOf(currentKnot) - 1;
@@ -136,21 +154,25 @@ namespace AOC_2022._22_09
 
             if (directionHeadMoved == 'U')
             {
+                
                 currentKnot.positionY = previousKnot.positionY - 1;
                 currentKnot.positionX = previousKnot.positionX;
             }
             if (directionHeadMoved == 'D')
             {
-                currentKnot.positionY = previousKnot.positionY + 1;
+ 
+                currentKnot.positionY = previousKnot.positionY+ + 1;
                 currentKnot.positionX = previousKnot.positionX;
             }
             if (directionHeadMoved == 'R')
             {
+              
                 currentKnot.positionX = previousKnot.positionX - 1;
                 currentKnot.positionY = previousKnot.positionY;
             }
             if (directionHeadMoved == 'L')
             {
+      
                 currentKnot.positionX = previousKnot.positionX + 1;
                 currentKnot.positionY = previousKnot.positionY;
             }

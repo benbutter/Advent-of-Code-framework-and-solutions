@@ -7,7 +7,7 @@ namespace BBRunner
     {
         static void Main(string[] args)
         {
-            const string puzzleDate = "22_09"; //change as needed
+            const string puzzleDate = "22_10"; //change as needed
 
 
 
