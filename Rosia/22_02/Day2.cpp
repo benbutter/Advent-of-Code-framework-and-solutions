@@ -33,7 +33,6 @@ Round  stringToRound(char* round)
 
 int getRoundResult(Round round)
 {
-    // this is fucked but its suprisingly efficient at solving the problem
     if (round.player == round.opponent + 1 || round.player == round.opponent - 2)
     {
         return round.player + 6;

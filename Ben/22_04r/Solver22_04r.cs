@@ -21,9 +21,8 @@ namespace AOC_2022._22_04r
                 string[] ranges = line.Split(",");
                 string[][] finalRanges = { ranges[0].Split("-"), ranges[1].Split("-") };
 
-                // {{1, 2},{3, 4}}
-                if (rangeWithinRange(finalRanges[0], finalRanges[1]) ||
-                    rangeWithinRange(finalRanges[1], finalRanges[0]))
+                // {{1, 6},{2, 4}}
+                if (rangeOverlaps(finalRanges[0], finalRanges[1]) || rangeOverlaps(finalRanges[1], finalRanges[0]))
                 {
                     total++;
                 }
@@ -35,6 +34,14 @@ namespace AOC_2022._22_04r
         {
             return int.Parse(range1[0]) <= int.Parse(range2[0]) &&
                                 int.Parse(range1[1]) >= int.Parse(range2[1]);
+        }
+
+        private static bool rangeOverlaps(string[] range1, string[] range2)
+        {
+            return int.Parse(range1[0]) <= int.Parse(range2[0]) &&
+                   int.Parse(range2[0]) <= int.Parse(range1[1]) ||
+                   int.Parse(range1[1]) >= int.Parse(range2[1]) &&
+                   int.Parse(range2[1]) >= int.Parse(range1[0]);
         }
 
         public void SetInput(StreamReader streamReader)
