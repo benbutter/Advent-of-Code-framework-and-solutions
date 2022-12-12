@@ -15,7 +15,7 @@ namespace BBRunner
 
             // solverRunner.injectedPath = "C:\\Users\\benbu\\source\\repos\\AOC - 2022\\Ben\\22_07\\input.txt";
             //solverRunner.injectedPath = "C: \\Users\\benbu\\source\repos\\AOC - 2022\\Ben\\22_07\\input.txt";
-            solverRunner.injectedPath = "C:\\input.txt";
+            solverRunner.injectedPath = "C:\\testinput.txt";
             Console.WriteLine(solverRunner.SolvePuzzle(puzzleDate));
         }
     }
