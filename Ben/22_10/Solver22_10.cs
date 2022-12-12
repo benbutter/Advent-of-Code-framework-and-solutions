@@ -14,12 +14,18 @@ namespace AOC_2022._22_10
         int cycleNumber = 1;
         string[] screen = new string[6];
 
+        
+
         public void SetInput(StreamReader streamReader)
         {
             input = streamReader;
         }
         public string GetSolution()
         {
+            for (int i = 0; i < 6; i++)
+            {
+                screen[i] = ".......................................";
+            }
             string line;
 
 
@@ -51,6 +57,7 @@ namespace AOC_2022._22_10
             {
                 Console.WriteLine(screen[i]);
             }
+            return "done";
         }
 
         private void CheckCycle()
@@ -69,21 +76,51 @@ namespace AOC_2022._22_10
 
         private void DrawChar()
         {
-            int y = (cycleNumber -1) % 40;
-
+             int y = 0;
+           // if (cycleNumber > 40)
+           // {
+           //    int  y = (cycleNumber - 1) / 40;
+           // }
+           //div not working?
+            if (cycleNumber < 40)
+            {
+                y = 0;
+            }
+            else if (cycleNumber < 80)
+            {
+                y = 1;
+            }
+            else if (cycleNumber < 120)
+            {
+                y = 2;
+            }
+            else if (cycleNumber < 160)
+            {
+                y = 3;
+            }
+            else if (cycleNumber < 200)
+            {
+                y = 4;
+            }
+            else if (cycleNumber < 240)
+            {
+                y = 5;
+            }
             string currentRow = screen[y];
             var charArr = currentRow.ToCharArray();
 
             if ((cycleNumber == x) || (cycleNumber == x - 1) || (cycleNumber == x + 1))
             {
-                charArr[x - 1] = '#';
+              //  charArr[x - 1] = '#';
                 charArr[x] = '#';
-                charArr[x + 1] = '#';
+              //  charArr[x + 1] = '#';
             }
-            else
+            screen[y] = new string(charArr);
+             
+          /*  else
             {
                 charArr[x] = '.';
-            }
+            }*/
            
         }
     }
