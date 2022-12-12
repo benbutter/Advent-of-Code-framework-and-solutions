@@ -24,7 +24,7 @@ namespace AOC_2022._22_10
         {
             for (int i = 0; i < 6; i++)
             {
-                screen[i] = ".......................................";
+                screen[i] = "........................................";
             }
             string line;
 
@@ -70,8 +70,9 @@ namespace AOC_2022._22_10
 
         private void IncrementCycle()
         {
-            cycleNumber++;
             DrawChar();
+            cycleNumber++;
+            
         }
 
         private void DrawChar()
@@ -106,14 +107,17 @@ namespace AOC_2022._22_10
             {
                 y = 5;
             }
+
+            int screenPos = cycleNumber % 40;
+
             string currentRow = screen[y];
             var charArr = currentRow.ToCharArray();
 
-            if ((cycleNumber == x) || (cycleNumber == x - 1) || (cycleNumber == x + 1))
+            if ((screenPos == x) || (screenPos == x - 1) || (screenPos == x + 1))
             {
-              //  charArr[x - 1] = '#';
-                charArr[x] = '#';
-              //  charArr[x + 1] = '#';
+                // charArr[x - 1] = '#';
+                charArr[screenPos] = '#';
+               //  charArr[x + 1] = '#';
             }
             screen[y] = new string(charArr);
              
