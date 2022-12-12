@@ -46,7 +46,7 @@ namespace AOC_2022._22_10
                 }
             }
 
-            return total.ToString();
+          //  return total.ToString();
         }
 
         private void CheckCycle()
