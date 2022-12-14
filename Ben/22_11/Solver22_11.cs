@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace AOC_2022._22_11
@@ -65,11 +66,20 @@ namespace AOC_2022._22_11
             }
             CreateMonkey(startingItems, operation, test, trueMonkey, falseMonkey, colony);
 
-            foreach (var monkey in colony.monkeys)
+            for (int i = 0; i < 10000; i++)  //20 rounds part 1 10000 rounds part 2
             {
-                monkey.InspectAndThrow();
+
+
+                int count = 0;
+                foreach (var monkey in colony.monkeys)
+                {
+                    monkey.InspectAndThrow();
+                    count++;
+                }
             }
-            return "";
+
+            List<Monkey> SortedList = colony.monkeys.OrderByDescending(m => m.inspectionCount).ToList();
+            return (SortedList[0].inspectionCount * SortedList[1].inspectionCount).ToString();
         }
 
         private void CreateMonkey(string[] startingItems, string operation, int test, int trueMonkey, int falseMonkey, MonkeyColony colony)

@@ -12,7 +12,7 @@ namespace AOC_2022._22_11
 
             monkey.items.Add(3);
 
-            var ressult = monkey.Operation();
+            var ressult = monkey.Operation(0);
 
             Assert.AreEqual(9, ressult);
         }
@@ -24,7 +24,7 @@ namespace AOC_2022._22_11
 
             monkey.items.Add(3);
 
-            var ressult = monkey.Operation();
+            var ressult = monkey.Operation(0);
 
             Assert.AreEqual(6, ressult);
         }
@@ -36,7 +36,7 @@ namespace AOC_2022._22_11
 
             monkey.items.Add(3);
 
-            var ressult = monkey.Operation();
+            var ressult = monkey.Operation(0);
 
             Assert.AreEqual(7, ressult);
         }

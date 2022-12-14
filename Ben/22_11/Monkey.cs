@@ -12,7 +12,7 @@ namespace AOC_2022._22_11
         public int trueMonkeyToThrowTo;
         public int falseMonkeyTothrowTo;
         public MonkeyColony colony;
-
+        public int inspectionCount = 0;
         public Monkey(  string _operationString,
                         int _testInt,
                         int _trueMonkeyToThrowTo,
@@ -31,39 +31,42 @@ namespace AOC_2022._22_11
         {
             for (int i = 0; i < items.Count; i++)
             {
-
-
-                items[i] = Operation();
-
-                bool result = (items[i] / testInt) == 0;
-
+                inspectionCount++;
+               
+                items[i] = Operation(i);
+                
+              //  items[i] = items[i] / 3; //part 2
+                
+                bool result = (items[i] % testInt) == 0;
+         
                 if (result)
                 {
                     colony.GetMonkey(trueMonkeyToThrowTo).items.Add(items[i]);
+                
                 }
                 else
                 {
                     colony.GetMonkey(falseMonkeyTothrowTo).items.Add(items[i]);
                 }
 
-                
+
             }
             RemoveItem();
         }
 
-        public int Operation()
+        public int Operation(int itemNumber)
         {
             var tokens = operationString.Split(" ");
             int result = 0;
 
             if (tokens[0] == "old")
             {
-                tokens[0] = items[0].ToString();
+                tokens[0] = items[itemNumber].ToString();
             }
 
             if (tokens[2] == "old")
             {
-                tokens[2] = items[0].ToString();
+                tokens[2] = items[itemNumber].ToString();
             }
 
             if (tokens[1] == "*")
