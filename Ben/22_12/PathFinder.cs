@@ -12,7 +12,7 @@ namespace AOC_2022._22_12
         List<string> previousPaths = new List<string>();
         public List<string> map;
 
-        string currentPath;
+        
         // int currentX = 0;
         //int currentY = 0;
         Point currentPoint = new Point();
