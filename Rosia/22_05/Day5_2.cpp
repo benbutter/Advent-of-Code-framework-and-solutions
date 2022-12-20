@@ -21,10 +21,17 @@ int main(int argc, char **argv)
 
     for (int i = 0; i < instructions.size(); i++)
     {
+        std::vector<char> cache;
         for (int j = 0; j < instructions[i][0]; j++)
         {
-            data[instructions[i][2]-1].push(data[instructions[i][1]-1].top());
+            cache.push_back(data[instructions[i][1]-1].top());
             data[instructions[i][1]-1].pop();
+        }
+
+        for (int j = 0; j < instructions[i][0]; j++)
+        {
+            data[instructions[i][2]-1].push(cache.back());
+            cache.pop_back();
         }
     }
 
