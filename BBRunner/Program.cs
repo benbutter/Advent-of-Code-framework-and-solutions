@@ -7,7 +7,7 @@ namespace BBRunner
     {
         static void Main(string[] args)
         {
-            const string puzzleDate = "22_12"; //change as needed
+            const string puzzleDate = "22_15"; //change as needed
 
 
 
@@ -15,7 +15,7 @@ namespace BBRunner
 
             // solverRunner.injectedPath = "C:\\Users\\benbu\\source\\repos\\AOC - 2022\\Ben\\22_07\\input.txt";
             //solverRunner.injectedPath = "C: \\Users\\benbu\\source\repos\\AOC - 2022\\Ben\\22_07\\input.txt";
-            solverRunner.injectedPath = "C:\\testinput.txt";
+            solverRunner.injectedPath = "C:\\input.txt";
             Console.WriteLine(solverRunner.SolvePuzzle(puzzleDate));
         }
     }
