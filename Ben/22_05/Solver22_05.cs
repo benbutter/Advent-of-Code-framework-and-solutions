@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace AOC_2022._22_05
 {
-    class Solver22_05 : ISolver
+    public class Solver22_05 : ISolver
     {
         StreamReader input;
         List<string> crates = new List<string>();

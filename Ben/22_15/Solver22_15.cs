@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AOC_2022._22_15
 {
-    internal class Solver22_15 : ISolver
+    public class Solver22_15 : ISolver
     {
         List<Sensor> allSensors = new List<Sensor>();
         StreamReader input;

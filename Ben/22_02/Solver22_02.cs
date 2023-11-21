@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AOC_2022._22_02
 {
-    class Solver22_02 : ISolver
+    public class Solver22_02 : ISolver
     {
         StreamReader input;
         public void SetInput(StreamReader streamReader)

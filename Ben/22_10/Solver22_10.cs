@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AOC_2022._22_10
 {
-    class Solver22_10 : ISolver
+    public class Solver22_10 : ISolver
     {
         int x = 1;
         int total = 0;

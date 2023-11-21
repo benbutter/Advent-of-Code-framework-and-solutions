@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AOC_2022._22_03
 {
-    class Solver22_03 : ISolver
+    public class Solver22_03 : ISolver
     {
         string[] lines = new string[3];
         List<string> linesToCheck = new List<string>();

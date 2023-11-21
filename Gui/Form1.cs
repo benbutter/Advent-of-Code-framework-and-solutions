@@ -1,5 +1,6 @@
 using System.Security;
 using System.Windows.Forms;
+using AOC_2022;
 
 namespace Gui
 {
@@ -8,6 +9,11 @@ namespace Gui
         public Form1()
         {
             InitializeComponent();
+
+            var solvers = GetSolvers();
+
+            listBox1.DataSource = solvers;
+
         }
 
         //need to create a solver runner and pass in filepath and puzzle date - should then return answer
@@ -31,7 +37,31 @@ namespace Gui
                 }*/
             }
 
-           // DTE.
+            // DTE.
         }
+
+        public List<Type> GetSolvers()
+        {
+            Type t = typeof(SolverRunner);
+            SolverRunner runner = new SolverRunner();
+            List<Type> result = new List<Type>();
+
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetAssembly(t);
+
+
+            Type[] types = assembly.GetExportedTypes();
+            foreach (Type type in types)
+            {
+                Type interfacetype = type.GetInterface("ISolver");
+                if (interfacetype != null)
+                {
+                    result.Add(type);
+                }
+            }
+            return result;
+
+        }
+
+       
     }
 }

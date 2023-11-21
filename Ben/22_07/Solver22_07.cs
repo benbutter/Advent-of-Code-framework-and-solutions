@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AOC_2022._22_07
 {
-    class Solver22_07 : ISolver
+    public class Solver22_07 : ISolver
     {
         StreamReader input;
         Directory topLevel;
