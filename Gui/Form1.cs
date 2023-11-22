@@ -12,7 +12,7 @@ namespace Gui
 
             var solvers = GetSolvers();
 
-            listBox1.DataSource = solvers;
+            lstSolvers.DataSource = solvers;
 
         }
 
@@ -25,19 +25,8 @@ namespace Gui
             {
                 MessageBox.Show(ofd.FileName);
 
-                /*try
-                {
-                    var sr = new StreamReader(ofd.FileName);
-                    SetText(sr.ReadToEnd());
-                }
-                catch (SecurityException ex)
-                {
-                    MessageBox.Show($"Security error.\n\nError message: {ex.Message}\n\n" +
-                    $"Details:\n\n{ex.StackTrace}");
-                }*/
             }
 
-            // DTE.
         }
 
         public List<Type> GetSolvers()
@@ -62,6 +51,11 @@ namespace Gui
 
         }
 
-       
+      
+
+        private void lstSolvers_SelectedValueChanged(object sender, EventArgs e)
+        {
+            lblSummary.Text = sender.ToString();
+        }
     }
 }

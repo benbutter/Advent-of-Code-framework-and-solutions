@@ -29,43 +29,91 @@
         private void InitializeComponent()
         {
             btnOpenFile = new Button();
-            listBox1 = new ListBox();
+            lstSolvers = new ListBox();
+            label1 = new Label();
+            lblSummary = new Label();
+            btnRun = new Button();
+            lblResult = new Label();
             SuspendLayout();
             // 
             // btnOpenFile
             // 
-            btnOpenFile.Location = new Point(67, 66);
+            btnOpenFile.Location = new Point(59, 286);
             btnOpenFile.Name = "btnOpenFile";
             btnOpenFile.Size = new Size(94, 29);
             btnOpenFile.TabIndex = 0;
-            btnOpenFile.Text = "Open File";
+            btnOpenFile.Text = "Select File";
             btnOpenFile.UseVisualStyleBackColor = true;
             btnOpenFile.Click += btnOpenFile_Click;
             // 
-            // listBox1
+            // lstSolvers
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 20;
-            listBox1.Location = new Point(251, 60);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(362, 204);
-            listBox1.TabIndex = 1;
+            lstSolvers.FormattingEnabled = true;
+            lstSolvers.ItemHeight = 20;
+            lstSolvers.Location = new Point(59, 66);
+            lstSolvers.Name = "lstSolvers";
+            lstSolvers.Size = new Size(362, 204);
+            lstSolvers.TabIndex = 1;
+            lstSolvers.SelectedValueChanged += lstSolvers_SelectedValueChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(59, 33);
+            label1.Name = "label1";
+            label1.Size = new Size(94, 20);
+            label1.TabIndex = 2;
+            label1.Text = "Select Solver";
+            // 
+            // lblSummary
+            // 
+            lblSummary.AutoSize = true;
+            lblSummary.Location = new Point(61, 338);
+            lblSummary.Name = "lblSummary";
+            lblSummary.Size = new Size(0, 20);
+            lblSummary.TabIndex = 3;
+            // 
+            // btnRun
+            // 
+            btnRun.Location = new Point(59, 338);
+            btnRun.Name = "btnRun";
+            btnRun.Size = new Size(94, 29);
+            btnRun.TabIndex = 4;
+            btnRun.Text = "Run";
+            btnRun.UseVisualStyleBackColor = true;
+            // 
+            // lblResult
+            // 
+            lblResult.AutoSize = true;
+            lblResult.Location = new Point(59, 389);
+            lblResult.Name = "lblResult";
+            lblResult.Size = new Size(0, 20);
+            lblResult.TabIndex = 5;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(listBox1);
+            ClientSize = new Size(507, 450);
+            Controls.Add(lblResult);
+            Controls.Add(btnRun);
+            Controls.Add(lblSummary);
+            Controls.Add(label1);
+            Controls.Add(lstSolvers);
             Controls.Add(btnOpenFile);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button btnOpenFile;
-        private ListBox listBox1;
+        private ListBox lstSolvers;
+        private Label label1;
+        private Label lblSummary;
+        private Button btnRun;
+        private Label lblResult;
     }
 }
