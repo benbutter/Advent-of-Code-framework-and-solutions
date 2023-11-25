@@ -24,17 +24,17 @@ namespace Gui
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show(ofd.FileName);
                 filePath = ofd.FileName;
+                UpdateSummary();
             }
 
         }
 
-        public List<Type> GetSolvers()
+        public List<string> GetSolvers()
         {
             Type t = typeof(SolverRunner);
             SolverRunner runner = new SolverRunner();
-            List<Type> result = new List<Type>();
+            List<string> result = new List<string>();
 
             System.Reflection.Assembly assembly = System.Reflection.Assembly.GetAssembly(t);
 
@@ -45,26 +45,37 @@ namespace Gui
                 Type interfacetype = type.GetInterface("ISolver");
                 if (interfacetype != null)
                 {
-                    result.Add(type);
+                    result.Add(FormatSolverName(type.ToString()));
                 }
             }
             return result;
 
         }
 
+        private string FormatSolverName(string solverName)
+        {
+            return solverName;
+            var split = solverName.Split('.');
+            return split.Last();
+        }
 
 
         private void lstSolvers_SelectedValueChanged(object sender, EventArgs e)
         {
-            lblSummary.Text = lstSolvers.Text;
+            UpdateSummary();
         }
 
+        private void UpdateSummary()
+        {
+            lblSummary.Text = $"{lstSolvers.Text} will be run with {filePath}";
+        }
         private void btnRun_Click(object sender, EventArgs e)
         {
-            SolverRunner runner = new SolverRunner();
+            var fact = new SolverFactory(lstSolvers.Text, filePath);
 
-            runner.injectedPath = filePath;
-          //  runner.SolvePuzzle
+            var solver = fact.CreateSolver();
+
+            lblResult.Text =  solver.GetSolution();
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -11,13 +11,13 @@ namespace Runner
         {
             const string puzzleDate = "22_07"; //change as needed
 
-
+            const string filePath = ""; //change as needed
 
             var solverRunner = new SolverRunner();
 
 
 
-            Console.WriteLine(solverRunner.SolvePuzzle(puzzleDate, null));
+            Console.WriteLine(solverRunner.SolvePuzzle(puzzleDate, filePath));
         }
     }
 }

@@ -69,13 +69,14 @@
             // 
             lblSummary.AutoSize = true;
             lblSummary.Location = new Point(61, 328);
+            lblSummary.MaximumSize = new Size(400, 0);
             lblSummary.Name = "lblSummary";
             lblSummary.Size = new Size(0, 20);
             lblSummary.TabIndex = 3;
             // 
             // btnRun
             // 
-            btnRun.Location = new Point(59, 402);
+            btnRun.Location = new Point(59, 392);
             btnRun.Name = "btnRun";
             btnRun.Size = new Size(94, 29);
             btnRun.TabIndex = 4;
@@ -86,7 +87,7 @@
             // lblResult
             // 
             lblResult.AutoSize = true;
-            lblResult.Location = new Point(59, 363);
+            lblResult.Location = new Point(59, 442);
             lblResult.Name = "lblResult";
             lblResult.Size = new Size(0, 20);
             lblResult.TabIndex = 5;

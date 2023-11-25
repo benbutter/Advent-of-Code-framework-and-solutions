@@ -35,7 +35,7 @@ namespace AOC_2022
 
         private Type GetSolverType(string puzzleDate)
         {
-            string typename = $"AOC_2022._{puzzleDate}.Solver{puzzleDate}";
+            string typename = puzzleDate;// $"AOC_2022._{puzzleDate}";//.Solver{puzzleDate}";
 
             Type type = Type.GetType(typename);
 
