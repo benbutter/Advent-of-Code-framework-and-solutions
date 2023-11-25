@@ -38,7 +38,7 @@
             // 
             // btnOpenFile
             // 
-            btnOpenFile.Location = new Point(59, 286);
+            btnOpenFile.Location = new Point(59, 290);
             btnOpenFile.Name = "btnOpenFile";
             btnOpenFile.Size = new Size(94, 29);
             btnOpenFile.TabIndex = 0;
@@ -50,7 +50,7 @@
             // 
             lstSolvers.FormattingEnabled = true;
             lstSolvers.ItemHeight = 20;
-            lstSolvers.Location = new Point(59, 66);
+            lstSolvers.Location = new Point(59, 56);
             lstSolvers.Name = "lstSolvers";
             lstSolvers.Size = new Size(362, 204);
             lstSolvers.TabIndex = 1;
@@ -59,7 +59,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(59, 33);
+            label1.Location = new Point(59, 23);
             label1.Name = "label1";
             label1.Size = new Size(94, 20);
             label1.TabIndex = 2;
@@ -68,24 +68,25 @@
             // lblSummary
             // 
             lblSummary.AutoSize = true;
-            lblSummary.Location = new Point(61, 338);
+            lblSummary.Location = new Point(61, 328);
             lblSummary.Name = "lblSummary";
             lblSummary.Size = new Size(0, 20);
             lblSummary.TabIndex = 3;
             // 
             // btnRun
             // 
-            btnRun.Location = new Point(59, 338);
+            btnRun.Location = new Point(59, 402);
             btnRun.Name = "btnRun";
             btnRun.Size = new Size(94, 29);
             btnRun.TabIndex = 4;
             btnRun.Text = "Run";
             btnRun.UseVisualStyleBackColor = true;
+            btnRun.Click += btnRun_Click;
             // 
             // lblResult
             // 
             lblResult.AutoSize = true;
-            lblResult.Location = new Point(59, 389);
+            lblResult.Location = new Point(59, 363);
             lblResult.Name = "lblResult";
             lblResult.Size = new Size(0, 20);
             lblResult.TabIndex = 5;
@@ -94,15 +95,16 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(507, 450);
+            ClientSize = new Size(507, 466);
             Controls.Add(lblResult);
             Controls.Add(btnRun);
             Controls.Add(lblSummary);
             Controls.Add(label1);
             Controls.Add(lstSolvers);
             Controls.Add(btnOpenFile);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "Form1";
-            Text = "Form1";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }

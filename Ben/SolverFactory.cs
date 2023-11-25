@@ -8,15 +8,21 @@ namespace AOC_2022
 {
     public class SolverFactory
     {
-        public string injectedPath;
+        private string filePath;
+        private string solverName;
 
-        public ISolver CreateSolver(string puzzleDate)
+        public SolverFactory(string _solverName, string _filePath)
         {
-            Type type = GetSolverType(puzzleDate);
+            filePath = _filePath;
+            solverName = _solverName;
+        }
+        public ISolver CreateSolver()
+        {
+            Type type = GetSolverType(solverName);
 
             ISolver solver = CreateSolverInstance(type);
 
-            SetInputOnSolver(puzzleDate, solver);
+            SetInputOnSolver(solverName, solver);
 
             return solver;
 
@@ -53,7 +59,7 @@ namespace AOC_2022
         {
             string path;
 
-            if (injectedPath == null)
+            if (filePath == null)
             {
                 //there must be a better way of doing this
                 DirectoryInfo di = new DirectoryInfo(Directory.GetCurrentDirectory());
@@ -62,7 +68,7 @@ namespace AOC_2022
             }
             else
             {
-               path = injectedPath;
+               path = filePath;
             }
              if (!File.Exists(path))
             {

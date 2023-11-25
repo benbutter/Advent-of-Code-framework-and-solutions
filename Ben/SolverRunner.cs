@@ -6,13 +6,13 @@ namespace AOC_2022
 {
     public class SolverRunner
     {
-        public string injectedPath;
-        public string SolvePuzzle(string puzzleDate)
+       
+        public string SolvePuzzle(string puzzleDate, string filePath)
         {
-            var fact = new SolverFactory();
-            fact.injectedPath = injectedPath;
+            var fact = new SolverFactory(puzzleDate, filePath);
+            
 
-            var solver = fact.CreateSolver(puzzleDate);
+            var solver = fact.CreateSolver();
 
             return solver.GetSolution();
         }

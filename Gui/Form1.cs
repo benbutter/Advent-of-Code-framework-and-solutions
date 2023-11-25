@@ -6,6 +6,7 @@ namespace Gui
 {
     public partial class Form1 : Form
     {
+        string filePath;
         public Form1()
         {
             InitializeComponent();
@@ -24,7 +25,7 @@ namespace Gui
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 MessageBox.Show(ofd.FileName);
-
+                filePath = ofd.FileName;
             }
 
         }
@@ -51,11 +52,24 @@ namespace Gui
 
         }
 
-      
+
 
         private void lstSolvers_SelectedValueChanged(object sender, EventArgs e)
         {
-            lblSummary.Text = sender.ToString();
+            lblSummary.Text = lstSolvers.Text;
+        }
+
+        private void btnRun_Click(object sender, EventArgs e)
+        {
+            SolverRunner runner = new SolverRunner();
+
+            runner.injectedPath = filePath;
+          //  runner.SolvePuzzle
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

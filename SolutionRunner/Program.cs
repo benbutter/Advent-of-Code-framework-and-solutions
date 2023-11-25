@@ -17,7 +17,7 @@ namespace Runner
 
 
 
-            Console.WriteLine(solverRunner.SolvePuzzle(puzzleDate));
+            Console.WriteLine(solverRunner.SolvePuzzle(puzzleDate, null));
         }
     }
 }
