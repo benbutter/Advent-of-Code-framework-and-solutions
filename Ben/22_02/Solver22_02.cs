@@ -25,12 +25,12 @@ namespace AOC_2022._22_02
             {
                 line = input.ReadLine();
                 //part 1
-                //  score += scorer.GetScoreForRound(line[0], line[2]); //part 1
+                 score += scorer.GetScoreForRound(line[0], line[2]); //part 1
 
                 //part 2
-                choiceToFix = fixer.GetOptionToFixResult(line[0], line[2]);
+              //  choiceToFix = fixer.GetOptionToFixResult(line[0], line[2]);
 
-                score += scorer.GetScoreForRound(line[0], choiceToFix);
+             //   score += scorer.GetScoreForRound(line[0], choiceToFix);
             }
             return score.ToString();
         }

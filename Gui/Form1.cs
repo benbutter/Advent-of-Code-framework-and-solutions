@@ -75,7 +75,7 @@ namespace Gui
 
             var solver = fact.CreateSolver();
 
-            lblResult.Text =  solver.GetSolution();
+            lblResult.Text = "Answer: " + solver.GetSolution();
         }
 
         private void Form1_Load(object sender, EventArgs e)
