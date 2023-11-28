@@ -7,8 +7,9 @@ namespace AOC_2022
 {
     public  interface ISolver
     {
-        public string GetSolution();
+        public string GetSolution(StreamReader streamReader);
 
-        public void SetInput(StreamReader streamReader);
+       // public string GetSolution();
+        // public void SetInput(StreamReader streamReader);
     }
 }

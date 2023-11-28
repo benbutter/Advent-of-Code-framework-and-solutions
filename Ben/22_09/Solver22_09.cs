@@ -8,12 +8,8 @@ namespace AOC_2022._22_09
 {
     public class Solver22_09 : ISolver
     {
-        StreamReader input;
-        public void SetInput(StreamReader streamReader)
-        {
-            input = streamReader;
-        }
-        public string GetSolution()
+       
+        public string GetSolution(StreamReader input)
         {
             string line;
             char direction;

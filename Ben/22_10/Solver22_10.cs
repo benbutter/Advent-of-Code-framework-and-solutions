@@ -9,18 +9,15 @@ namespace AOC_2022._22_10
     {
         int x = 1;
         int total = 0;
-        StreamReader input;
+        
         int lineCount;
         int cycleNumber = 1;
         string[] screen = new string[6];
 
         
 
-        public void SetInput(StreamReader streamReader)
-        {
-            input = streamReader;
-        }
-        public string GetSolution()
+       
+        public string GetSolution(StreamReader input)
         {
             for (int i = 0; i < 6; i++)
             {

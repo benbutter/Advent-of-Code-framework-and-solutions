@@ -7,7 +7,7 @@ namespace AOC_2022._22_07
 {
     public class Solver22_07 : ISolver
     {
-        StreamReader input;
+      
         Directory topLevel;
         Directory currentDirectory;
         int lineCount = 0;
@@ -18,18 +18,14 @@ namespace AOC_2022._22_07
 
 
         
-        public void SetInput(StreamReader streamReader)
-        {
-            input = streamReader;
-        }
-
+      
         public Solver22_07()
         {
             topLevel = new Directory();
             topLevel.name = "/";
             SetCurrentDir(topLevel);
         }
-        public string GetSolution()
+        public string GetSolution(StreamReader input)
         {
             bool listMode = false;
             string line;

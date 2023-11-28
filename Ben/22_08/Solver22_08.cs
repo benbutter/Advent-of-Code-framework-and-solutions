@@ -7,12 +7,8 @@ namespace AOC_2022._22_08
 {
     public class Solver22_08 : ISolver
     {
-        StreamReader input;
-        public void SetInput(StreamReader streamReader)
-        {
-            input = streamReader;
-        }
-        public string GetSolution()
+       
+        public string GetSolution(StreamReader input)
         {
    
             List<string> listOfTrees = new List<string>();

@@ -22,20 +22,15 @@ namespace AOC_2022
 
             ISolver solver = CreateSolverInstance(type);
 
-            SetInputOnSolver(solverName, solver);
-
             return solver;
 
         }
 
-        private void SetInputOnSolver(string puzzleDate, ISolver solver)
-        {
-            solver.SetInput(GetInput(puzzleDate));
-        }
+       
 
         private Type GetSolverType(string puzzleDate)
         {
-            string typename = puzzleDate;// $"AOC_2022._{puzzleDate}";//.Solver{puzzleDate}";
+            string typename = puzzleDate;
 
             Type type = Type.GetType(typename);
 
@@ -53,33 +48,6 @@ namespace AOC_2022
 
             ISolver solver = (ISolver)instance;
             return solver;
-        }
-
-        private StreamReader GetInput(string puzzleDate)
-        {
-            string path;
-
-            if (filePath == null)
-            {
-                //there must be a better way of doing this
-                DirectoryInfo di = new DirectoryInfo(Directory.GetCurrentDirectory());
-                path = di.Parent.Parent.Parent.Parent.FullName + $"\\AOC-2022\\Ben\\{puzzleDate}\\input.txt";
-                path = "C:\\Users\\Rosia\\Documents\\GitHub\\AOC-2022\\Ben\\22_04r\\input.txt";
-            }
-            else
-            {
-               path = filePath;
-            }
-             if (!File.Exists(path))
-            {
-                throw new Exception("File not found.");
-            }
-
-            var fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
-
-            var streamReader = new StreamReader(fileStream, Encoding.UTF8);
-
-            return streamReader;
         }
     }
 }

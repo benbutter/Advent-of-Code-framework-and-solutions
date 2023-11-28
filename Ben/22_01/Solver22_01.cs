@@ -7,15 +7,12 @@ namespace AOC_2022._22_01
 {
     public class Solver22_01 : ISolver
     {
-        StreamReader input;
-        public void SetInput(StreamReader streamReader)
-        {
-            input = streamReader;
-        }
 
-        public string GetSolution()
+        StreamReader input;
+
+        public string GetSolution(StreamReader _input)
         {
-            
+            input = _input;
             List<int> accumulatedValues = AccumulateValuesIntoList();
 
             //part one

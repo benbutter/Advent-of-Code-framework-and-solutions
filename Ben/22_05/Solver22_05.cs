@@ -8,13 +8,10 @@ namespace AOC_2022._22_05
 {
     public class Solver22_05 : ISolver
     {
-        StreamReader input;
+        
         List<string> crates = new List<string>();
-        public void SetInput(StreamReader streamReader)
-        {
-            input = streamReader;
-        }
-        public string GetSolution()
+      
+        public string GetSolution(StreamReader input)
         {
             bool stackingPhaseOver = false;
             string line;

@@ -1,4 +1,6 @@
+using System.IO;
 using System.Security;
+using System.Text;
 using System.Windows.Forms;
 using AOC_2022;
 
@@ -75,12 +77,21 @@ namespace Gui
 
             var solver = fact.CreateSolver();
 
-            lblResult.Text = "Answer: " + solver.GetSolution();
+            lblResult.Text = "Answer: " + solver.GetSolution(CreateStreamReader(filePath));
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private StreamReader CreateStreamReader(string filePath)
+        {
+            var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+
+            var streamReader = new StreamReader(fileStream, Encoding.UTF8);
+
+            return streamReader;
         }
     }
 }

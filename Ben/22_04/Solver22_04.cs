@@ -7,15 +7,12 @@ namespace AOC_2022._22_04
 {
     public class Solver22_04 : ISolver
     {
-        StreamReader input;
+        
         int count = 0;
         ContainsCheck checker = new ContainsCheck();
 
-        public void SetInput(StreamReader streamReader)
-        {
-            input = streamReader; ;
-        }
-        public string GetSolution()
+       
+        public string GetSolution(StreamReader input)
         {
             string line;
 

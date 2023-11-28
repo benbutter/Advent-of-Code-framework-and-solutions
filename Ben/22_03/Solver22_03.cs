@@ -10,13 +10,8 @@ namespace AOC_2022._22_03
         string[] lines = new string[3];
         List<string> linesToCheck = new List<string>();
 
-        StreamReader input;
-        public void SetInput(StreamReader streamReader)
-        {
-            input = streamReader;
-        }
 
-        public string GetSolution()
+        public string GetSolution(StreamReader input)
         {
             int total = 0;
         

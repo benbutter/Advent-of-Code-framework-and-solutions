@@ -9,8 +9,8 @@ namespace AOC_2022._22_04r
 {
     public class Solver22_04r : ISolver
     {
-        StreamReader input;
-        public string GetSolution()
+       
+        public string GetSolution(StreamReader input)
         {
             int total = 0;
             while (!input.EndOfStream)
@@ -44,9 +44,6 @@ namespace AOC_2022._22_04r
                    int.Parse(range2[1]) >= int.Parse(range1[0]);
         }
 
-        public void SetInput(StreamReader streamReader)
-        {
-            input = streamReader;
-        }
+        
     }
 }

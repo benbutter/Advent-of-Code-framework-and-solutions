@@ -11,12 +11,10 @@ namespace AOC_2022._22_15
         StreamReader input;
         // const int RowToCheck = 10;
         const int RowToCheck = 2000000;
-        public void SetInput(StreamReader streamReader)
+      
+        public string GetSolution(StreamReader _input)
         {
-            input = streamReader;
-        }
-        public string GetSolution()
-        {
+            input = _input;
             ReadFileToCreateSensors();
 
             PointHolder holder = CreatePointsCoveredBySensorOnRowToCheck();

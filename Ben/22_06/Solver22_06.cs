@@ -8,13 +8,10 @@ namespace AOC_2022._22_06
     public class Solver22_06 : ISolver
     {
         string line;
-        StreamReader input;
+       
         UniqueChainFinder finder = new UniqueChainFinder();
-        public void SetInput(StreamReader streamReader)
-        {
-            input = streamReader;
-        }
-        public string GetSolution()
+      
+        public string GetSolution(StreamReader input)
         {
             while (!input.EndOfStream)
             {

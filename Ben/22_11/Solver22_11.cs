@@ -8,8 +8,8 @@ namespace AOC_2022._22_11
 {
     public class Solver22_11 : ISolver
     {
-        private StreamReader input;
-        public string GetSolution()
+      
+        public string GetSolution(StreamReader input)
         {
             string line;
             int lineCountPerMonkey = 0;
@@ -93,9 +93,6 @@ namespace AOC_2022._22_11
             colony.monkeys.Add(monkey);
         }
 
-        public void SetInput(StreamReader streamReader)
-        {
-            input = streamReader;
-        }
+       
     }
 }
