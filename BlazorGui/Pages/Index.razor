@@ -1,0 +1,98 @@
+﻿@page "/"
+@using AOC_2022;
+@using System.Text;
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+<button class="btn btn-primary" @onclick="RunSolver">Run</button>
+
+<p role="status">Answer: @answer</p>
+
+<label for="liSolvers">Choose a Solver:</label>
+<select name="lisolvers" id="lisolvers" @onchange="SolverHasChanged">
+
+    @foreach (var solver in solvers)
+    {
+        <option value=@solver>@solver</option>
+    }
+         
+   
+</select>
+
+<FileUpload></FileUpload>
+
+@code {
+    string solversText = "AOC_2022._20_01.Solver20_01";
+    string filePath = "C:\\Users\\benbu\\OneDrive\\Documents\\Aoc Input\\20_01.txt";
+    string answer;
+    List<string> solvers = new List<string>();
+
+    private void SolverHasChanged(ChangeEventArgs args)
+    {
+        answer = args.Value.ToString();
+       
+    }
+    private void RunSolver()
+    {
+       
+        
+        var fact = new SolverFactory(solversText, filePath);
+
+        var solver = fact.CreateSolver();
+
+        answer = "Answer: " + solver.GetSolution(CreateStreamReader(filePath));
+    }
+
+    private StreamReader CreateStreamReader(string filePath)
+    {
+        var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+
+        var streamReader = new StreamReader(fileStream, Encoding.UTF8);
+
+        return streamReader;
+    }
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        solvers = GetSolvers();
+
+    }
+
+    public List<string> GetSolvers()
+    {
+        Type t = typeof(SolverRunner);
+        SolverRunner runner = new SolverRunner();
+        List<string> result = new List<string>();
+
+        System.Reflection.Assembly assembly = System.Reflection.Assembly.GetAssembly(t);
+
+
+        Type[] types = assembly.GetExportedTypes();
+        foreach (Type type in types)
+        {
+            Type interfacetype = type.GetInterface("ISolver");
+            if (interfacetype != null)
+            {
+                result.Add(FormatSolverName(type.ToString()));
+            }
+        }
+        return result;
+
+    }
+
+    private string FormatSolverName(string solverName)
+    {
+        return solverName;
+        var split = solverName.Split('.');
+        return split.Last();
+    }
+}
+
