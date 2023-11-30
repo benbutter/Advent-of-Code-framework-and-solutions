@@ -25,17 +25,63 @@ Welcome to your new app.
    
 </select>
 
-<FileUpload></FileUpload>
+<InputFile OnChange="@LoadFiles" />
 
 @code {
-    string solversText = "AOC_2022._20_01.Solver20_01";
-    string filePath = "C:\\Users\\benbu\\OneDrive\\Documents\\Aoc Input\\20_01.txt";
+    string solversText;// = "AOC_2022._20_01.Solver20_01";
+    string filePath = "";//"C:\\Users\\benbu\\OneDrive\\Documents\\Aoc Input\\20_01.txt";
     string answer;
+    Stream stream;
+
     List<string> solvers = new List<string>();
+
+    private List<IBrowserFile> loadedFiles = new();
+    private long maxFileSize = 1024 * 15;
+    private int maxAllowedFiles = 3;
+    private bool isLoading;
+    private string? message;
+
+    private async Task LoadFiles(InputFileChangeEventArgs e)
+    {
+        isLoading = true;
+        loadedFiles.Clear();
+        message = string.Empty;
+
+        if (e.FileCount > maxAllowedFiles)
+        {
+            message = $"Try again with no more than {maxAllowedFiles} files.";
+        }
+        else
+        {
+            foreach (var file in e.GetMultipleFiles(maxAllowedFiles))
+            {
+                var trustedFileNameForFileStorage = Path.GetRandomFileName();
+                var path = Path.Combine(Environment.ProcessPath,
+                        Environment.UserDomainName, "unsafe_uploads",
+                        trustedFileNameForFileStorage);
+                await using FileStream fs = new(path, FileMode.Create);
+
+
+                await file.OpenReadStream(maxFileSize).CopyToAsync(fs);
+                loadedFiles.Add(file);
+
+            }
+        }
+
+
+    }
+    private async Task LoadFile(InputFileChangeEventArgs e)
+    {
+        //stream = new FileStream(e.File, FileMode.Open, FileAccess.Read);
+
+        //  stream = e.File.OpenReadStream();
+        stream = new MemoryStream();
+        await e.File.OpenReadStream().CopyToAsync(stream);
+    }
 
     private void SolverHasChanged(ChangeEventArgs args)
     {
-        answer = args.Value.ToString();
+        solversText = args.Value.ToString();
        
     }
     private void RunSolver()
@@ -51,9 +97,9 @@ Welcome to your new app.
 
     private StreamReader CreateStreamReader(string filePath)
     {
-        var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+       // var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
 
-        var streamReader = new StreamReader(fileStream, Encoding.UTF8);
+        var streamReader = new StreamReader(stream, Encoding.UTF8);
 
         return streamReader;
     }
