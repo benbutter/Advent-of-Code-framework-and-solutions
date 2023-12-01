@@ -1,4 +1,4 @@
-# AOC-2022
+# AOC-solutions and framework
 
 Simple framework and solutions for Advent of Code. 
 
