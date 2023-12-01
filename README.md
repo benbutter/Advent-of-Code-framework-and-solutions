@@ -1,15 +1,15 @@
 # AOC-solutions and framework
 
-Simple framework and solutions for Advent of Code. 
+c# framework and solutions for Advent of Code. 
 
 How to use:
-Create Class to be the main Class for the challenge. One Class per challenge. 
+Create Class to be the main Class for the challenge. One Class per daily challenge. 
 
-Then reimplement the ISolver interface this will give the Class the method GetSolution(StreamReader input) use this to create your answer
+Implement the ISolver interface this will give the Class the method GetSolution(StreamReader input) use this to create your answer.
 
  this method should be coded as such
  
-   public int GetSolution( StreamReader input)
+   public string GetSolution( StreamReader input)
         {
           int answer;
           //Read stream using streamreader passed
