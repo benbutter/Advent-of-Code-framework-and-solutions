@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AOC_2022._23_02
 {
-    internal class Solver23_02Ben : ISolver
+    public class Solver23_02Ben : ISolver
     {
         Dictionary<string, int> colourTotal;
         List<int> validGames;
@@ -33,14 +33,45 @@ namespace AOC_2022._23_02
             {
                 var line = streamReader.ReadLine();
                 gameNumber++;
+                int maxValueForColour = 0;
+                int currnetValue;
+                var splitLines = line.Split(" ");
 
-                var reversedLine = line.Reverse();
-                var splitLines = reversedLine.ToString().Split(" ");
+               var reversedSplitLines =  splitLines.Reverse();
 
+                foreach (var splitLine in reversedSplitLines)
+                {
+                    var sanitisedSplitLine = splitLine.Replace(";", "");
+                    if (sanitisedSplitLine == "green")
+                    {
+                        maxValueForColour = 13;
+                    }
+                    else if (sanitisedSplitLine == "blue")
+                    {
+                        maxValueForColour = 14;
+                    }
+                    else if (sanitisedSplitLine == "red")
+                    {
+                        maxValueForColour = 12;
+                    }
+                    else if (sanitisedSplitLine == "Game")
+                    {
+                        total = total + gameNumber;
+                    }
 
+                    else if (Int32.TryParse(sanitisedSplitLine, out currnetValue))
+                    {
+                        if (currnetValue > maxValueForColour & maxValueForColour > 0)
+                        {
+                            maxValueForColour = 0;
+                            break;
+                        }
+                        maxValueForColour = 0;
+                    }
+                }
             }
 
-            return "0";
+            return total.ToString();
         }
 
 
