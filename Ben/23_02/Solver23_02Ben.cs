@@ -42,6 +42,7 @@ namespace AOC_2022._23_02
                 foreach (var splitLine in reversedSplitLines)
                 {
                     var sanitisedSplitLine = splitLine.Replace(";", "");
+                     sanitisedSplitLine = sanitisedSplitLine.Replace(",", "");
                     if (sanitisedSplitLine == "green")
                     {
                         maxValueForColour = 13;
@@ -64,6 +65,7 @@ namespace AOC_2022._23_02
                         if (currnetValue > maxValueForColour & maxValueForColour > 0)
                         {
                             maxValueForColour = 0;
+                            Console.WriteLine(line);
                             break;
                         }
                         maxValueForColour = 0;
