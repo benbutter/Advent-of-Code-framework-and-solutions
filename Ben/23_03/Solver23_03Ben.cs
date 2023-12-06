@@ -97,6 +97,7 @@ namespace AOC_2022._23_03
 
             }
             pointsToCheck.Clear();
+            nbrString = "";
             return nbrString;
         }
 
