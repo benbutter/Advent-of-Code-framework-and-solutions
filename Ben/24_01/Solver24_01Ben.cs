@@ -53,8 +53,7 @@ namespace AOC_2022._24_07
 
         private static int GetNumberOfMatches(int intToMatch, List<int> list)
         {
-            //  intToMatchFromListOne = intToMatch;
-            //List<int> Result = new List<int>(list.FindAll(Predicate));
+           
             int count;
             count = 0;
             IEnumerable matches = list.Where(x => x == intToMatch);
