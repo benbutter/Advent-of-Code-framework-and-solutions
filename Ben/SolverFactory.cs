@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AOC_2022._22_02;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
@@ -18,7 +19,7 @@ namespace AOC_2022
         }
         public ISolver CreateSolver()
         {
-            Type type = GetSolverType(solverName);
+            Type type = GetSolverType();
 
             ISolver solver = CreateSolverInstance(type);
 
@@ -28,12 +29,10 @@ namespace AOC_2022
 
        
 
-        private Type GetSolverType(string puzzleDate)
+        private Type GetSolverType()
         {
-            string typename = puzzleDate;
-
-            Type type = Type.GetType(typename);
-
+            Type type = Type.GetType(solverName);
+            var solver = new Solver22_02();
             if (type == null)
             {
                 throw new Exception("Type not found.");

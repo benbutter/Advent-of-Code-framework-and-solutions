@@ -8,9 +8,9 @@ namespace AOC_2022
     public class SolverRunner
     {
        
-        public string SolvePuzzle(string puzzleDate, string filePath)
+        public string SolvePuzzle(string solverName, string filePath)
         {
-            var fact = new SolverFactory(puzzleDate, filePath);
+            var fact = new SolverFactory(solverName, filePath);
             
 
             var solver = fact.CreateSolver();

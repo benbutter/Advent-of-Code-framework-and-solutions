@@ -5,15 +5,15 @@ namespace _2021_1_Recap
 {
     class Program
     {
-      /*  static void Main(string[] args)
+   /*     static void Main(string[] args)
         {
             const string puzzleDate = "21_01";//change as needed
 
-            var fact = new SolverFactory();
+          //  var fact = new SolverFactory();
 
-            var solver = fact.GetSolver(puzzleDate);
+         //   var solver = fact.GetSolver(puzzleDate);
 
-            solver.GetSolution();
+         //   solver.GetSolution();
         }*/
     }
 }
