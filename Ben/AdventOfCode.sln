@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BBRunner", "..\BBRunner\BBR
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gui", "..\Gui\Gui.csproj", "{9BEBE0E8-2BBC-4092-843C-8E607C6EBC29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorGui", "..\BlazorGui\BlazorGui.csproj", "{18B60B14-A499-4F87-BF5F-848E66822695}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorGui", "..\BlazorGui\BlazorGui.csproj", "{18B60B14-A499-4F87-BF5F-848E66822695}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
